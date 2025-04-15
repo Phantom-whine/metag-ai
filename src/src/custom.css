@@ -1,0 +1,39 @@
+@font-face {
+    font-family: flot;
+    src: url(BricolageGrotesque-SemiBold.otf);
+}
+@font-face {
+    font-family: flot-b;
+    src: url(BricolageGrotesque48pt-ExtraBold.otf);
+}
+@font-face {
+    font-family: flot-sm;
+    src: url(BricolageGrotesque10pt-Medium.otf);
+}
+.flot{
+    font-family: flot;
+}
+.flot-b{
+    font-family: flot-b;
+}
+.flot-sm{
+    font-family: flot-sm;
+}
+body{
+    background-color: rgb(13, 13, 13);
+}
+::-webkit-scrollbar{
+    background-color: black;
+    width: 10px;
+    padding: 3px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: white;
+    border-radius: 2px;
+}
+*{
+    scroll-behavior: smooth;
+    scroll-snap-type: proximity;
+    caret-shape: underscore;
+    caret-color: #ccfc7e;
+}
