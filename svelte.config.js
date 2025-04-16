@@ -5,7 +5,15 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
   preprocess: vitePreprocess(),
   kit: {
-    adapter: adapter()
+    adapter: adapter({
+      routes: {
+        include: ['/*'], // Ensure all routes can invoke server-side logic
+        exclude: ['<build>', '<prerendered>', '/static/*'] // Exclude build artifacts and static assets
+      }
+    }),
+    prerender: {
+      entries: [] // Disable automatic prerendering to prioritize server redirects
+    }
   }
 };
 
