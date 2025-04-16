@@ -22,6 +22,8 @@ export const setTokens = (access, refresh) => {
     sameSite: 'Strict',
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
   });
+
+  console.log(Cookies.get('access'), Cookies.get('refresh'))
 };
 
 export const clearTokens = () => {
