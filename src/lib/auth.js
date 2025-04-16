@@ -26,13 +26,13 @@ export const setTokens = (access, refresh) => {
   console.log(Cookies.get('access'), Cookies.get('refresh'))
 };
 
-// export const clearTokens = () => {
-//   Cookies.remove('access', { path: '/' });
-//   Cookies.remove('refresh', { path: '/' });
-//   Cookies.remove('profile', { path: '/' });
-//   stopTokenRefresh();
-//   goto('/');
-// };
+export const clearTokens = () => {
+  // Cookies.remove('access', { path: '/' });
+  // Cookies.remove('refresh', { path: '/' });
+  // Cookies.remove('profile', { path: '/' });
+  stopTokenRefresh();
+  goto('/');
+};
 
 // Enhanced API client
 export const apiClient = async (endpoint, options = {}) => {
