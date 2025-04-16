@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import { browser } from '$app/environment';
 
-export const ssr = false;
+export const ssr = true;
 
 export function load({ parent }) {
     return parent().then(({ user }) => {
