@@ -1,37 +1,45 @@
-// src/lib/auth.js
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { goto } from '$app/navigation';
 
 const API_URL = import.meta.env.VITE_DJANGO_API_URL;
+const isProduction = true;
 
 // Token management
 export const isLoggedIn = () => !!Cookies.get('access');
 export const getAccessToken = () => Cookies.get('access') || '';
 export const getRefreshToken = () => Cookies.get('refresh') || '';
+
 export const setTokens = (access, refresh) => {
-  console.log('saved')
-  Cookies.set('access', access, { 
-    path: '/', 
-    sameSite: 'Lax',  // Changed from 'Strict' to allow cross-domain requests
-    secure: true,      // Required when sameSite is 'None'
-    expires: new Date(Date.now() + 15 * 60 * 1000)
+  const cookieOptions = {
+    path: '/',
+    sameSite: isProduction ? 'None' : 'Lax',
+    secure: isProduction,
+  };
+
+  Cookies.set('access', access, {
+     // ...cookieOptions,
+    expires: 15 / (60 * 24) // 15 minutes in days
   });
 
   Cookies.set('refresh', refresh, {
-    path: '/',
-    sameSite: 'Lax',  // Changed from 'Strict'
-    secure: true,      // Required for cross-domain in production
-    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+    // ...cookieOptions,
+    expires: 7 // 7 days
   });
 
-  console.log(Cookies.get('access'), Cookies.get('refresh'))
+  console.log('Tokens set:', Cookies.get('access'), Cookies.get('refresh'));
 };
 
 export const clearTokens = () => {
-  Cookies.remove('access', { path: '/', sameSite: 'None', secure: true });
-  Cookies.remove('refresh', { path: '/', sameSite: 'None', secure: true });
-  Cookies.remove('profile', { path: '/', sameSite: 'None', secure: true });
+  const cookieOptions = {
+    path: '/',
+    sameSite: isProduction ? 'None' : 'Lax',
+    secure: isProduction
+  };
+
+  Cookies.remove('access', cookieOptions);
+  Cookies.remove('refresh', cookieOptions);
+  Cookies.remove('profile', cookieOptions);
   stopTokenRefresh();
   goto('/');
 };
@@ -73,20 +81,24 @@ export const apiClient = async (endpoint, options = {}) => {
 
 // Auth operations
 export const loginUser = async (access, refresh, profile, register) => {
-  if(profile){
-    Cookies.set('profile', profile, {
-      path: '/',
-      sameSite: 'None',
-      secure: true
-    })
+  const cookieOptions = {
+    path: '/',
+    sameSite: isProduction ? 'None' : 'Lax',
+    secure: isProduction
+  };
+
+  if (profile) {
+    Cookies.set('profile', profile, cookieOptions);
   }
+
   setTokens(access, refresh);
   initializeAuth();
-  if(!register){
+
+  if (!register) {
     goto('/dashboard');
-  }else{
-    localStorage.setItem('boarded', 'false')
-    goto('/dashboard/onboarding')
+  } else {
+    localStorage.setItem('boarded', 'false');
+    goto('/dashboard/onboarding');
   }
 };
 
@@ -103,7 +115,6 @@ export const verifyToken = async () => {
 export const getCurrentUser = async () => {
   try {
     const { data } = await apiClient('/api/auth/me/');
-    // Cookies.set('profile', data.profile)
     return data;
   } catch {
     return null;
@@ -144,8 +155,8 @@ export const startTokenRefresh = () => {
     }
 
     try {
-        await refreshToken();
-        console.log('TOKEN REFRESHED')
+      await refreshToken();
+      console.log('Token refreshed successfully');
     } catch (error) {
       console.error('Token check error:', error);
       clearTokens();
@@ -153,7 +164,8 @@ export const startTokenRefresh = () => {
   };
 
   // Run immediately and every 5 minutes
-  refreshInterval = setInterval(checkAndRefresh, 200000); //200000
+  checkAndRefresh();
+  refreshInterval = setInterval(checkAndRefresh, 300000); // 5 minutes
 };
 
 export const stopTokenRefresh = () => {
