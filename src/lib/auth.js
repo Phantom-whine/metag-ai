@@ -13,13 +13,15 @@ export const setTokens = (access, refresh) => {
   console.log('saved')
   Cookies.set('access', access, { 
     path: '/', 
-    sameSite: 'Strict',
+    sameSite: 'None',  // Changed from 'Strict' to allow cross-domain requests
+    secure: true,      // Required when sameSite is 'None'
     expires: new Date(Date.now() + 15 * 60 * 1000)
   });
 
   Cookies.set('refresh', refresh, {
     path: '/',
-    sameSite: 'Strict',
+    sameSite: 'None',  // Changed from 'Strict'
+    secure: true,      // Required for cross-domain in production
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
   });
 
@@ -27,9 +29,9 @@ export const setTokens = (access, refresh) => {
 };
 
 export const clearTokens = () => {
-  // Cookies.remove('access', { path: '/' });
-  // Cookies.remove('refresh', { path: '/' });
-  // Cookies.remove('profile', { path: '/' });
+  Cookies.remove('access', { path: '/', sameSite: 'None', secure: true });
+  Cookies.remove('refresh', { path: '/', sameSite: 'None', secure: true });
+  Cookies.remove('profile', { path: '/', sameSite: 'None', secure: true });
   stopTokenRefresh();
   goto('/');
 };
@@ -72,7 +74,11 @@ export const apiClient = async (endpoint, options = {}) => {
 // Auth operations
 export const loginUser = async (access, refresh, profile, register) => {
   if(profile){
-    Cookies.set('profile', profile)
+    Cookies.set('profile', profile, {
+      path: '/',
+      sameSite: 'None',
+      secure: true
+    })
   }
   setTokens(access, refresh);
   initializeAuth();
