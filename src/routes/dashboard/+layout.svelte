@@ -16,7 +16,7 @@
 <div class="flex">
     {#if browser}
         {#if !window.location.href.includes("onboarding")}
-            <div class="sidebar-fixed hidden lg:fixed">
+            <div class="sidebar-fixed">
                 <Sidebar
                     name={data.user.fullname}
                     image={profile_url}
