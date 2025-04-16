@@ -13,14 +13,14 @@ export const setTokens = (access, refresh) => {
   console.log('saved')
   Cookies.set('access', access, { 
     path: '/', 
-    sameSite: 'None',  // Changed from 'Strict' to allow cross-domain requests
+    sameSite: 'Lax',  // Changed from 'Strict' to allow cross-domain requests
     secure: true,      // Required when sameSite is 'None'
     expires: new Date(Date.now() + 15 * 60 * 1000)
   });
 
   Cookies.set('refresh', refresh, {
     path: '/',
-    sameSite: 'None',  // Changed from 'Strict'
+    sameSite: 'Lax',  // Changed from 'Strict'
     secure: true,      // Required for cross-domain in production
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
   });
