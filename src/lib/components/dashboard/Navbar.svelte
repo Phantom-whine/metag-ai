@@ -253,11 +253,9 @@
 <header class="sticky top-0 z-50 bg-[#0e0e0e]">
     <div class="container mx-auto px-4 h-20 flex items-center justify-between">
         <div class="flex items-center gap-3">
-            <!-- <img src="/logo.png" alt="" class="w-9 h-9" />
-            <span
-                class="text-xl font-semibold tracking-tight flot-b text-white hidden md:inline"
-                >Metag</span
-            > -->
+            <div class="responsive-div">
+                <img src="/logo.png" alt="" class="w-9 h-9" />
+            </div>
         </div>
         <div class="flex items-center gap-5">
             <button
@@ -394,3 +392,15 @@
         </div>
     </div>
 </header>
+<style>
+   .responsive-div {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .responsive-div {
+    display: none;
+  }
+}
+
+</style>
