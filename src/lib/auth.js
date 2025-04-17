@@ -25,7 +25,7 @@ export const setTokens = (access, refresh) => {
     path: '/',
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
   });
-  setCookie('mango', 'berry');
+  setCookie('mango', 'berry', 1);
 };
 
 export const clearTokens = () => {
