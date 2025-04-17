@@ -15,7 +15,7 @@
 
 <div class="flex">
     <div class="sidebar-fixed responsive-div" class:main-content-with-sidebar={!showSidebar}
-    class:main-content-with-sidebar-collapsed={showSidebar}>
+        class:main-content-with-sidebar-collapsed={showSidebar}>
         <Sidebar
             name={data.user.fullname}
             image={profile_url}

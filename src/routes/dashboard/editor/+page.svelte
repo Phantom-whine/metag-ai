@@ -112,7 +112,7 @@
         tempStore.delTemp();
         if (!postId) {
             try {
-                const API_URL = import.meta.env.VITE_DJANGO_API_URL;
+                const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
                 const response = await axios.post(
                     `${API_URL}/api/posts/save-editor/`,
                     {
@@ -129,7 +129,7 @@
             }
         } else {
             try {
-                const API_URL = import.meta.env.VITE_DJANGO_API_URL;
+                const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
                 const response = await axios.post(
                     `${API_URL}/api/posts/edit/${postId}/`,
                     {
@@ -160,7 +160,7 @@
             }
             try {
                 loading = true;
-                const API_URL = import.meta.env.VITE_DJANGO_API_URL;
+                const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
                 const response = await axios.post(
                     `${API_URL}/api/posts/edit-ai/`,
                     {
