@@ -16,16 +16,16 @@ export const getRefreshToken = () => Cookies.get('refresh') || '';
 
 export const setTokens = (access, refresh) => {
   console.log('saved')
-  Cookies.set('access', access, { 
-    path: '/', 
-    expires: new Date(Date.now() + 15 * 60 * 1000)
-  });
+  // Cookies.set('access', access, { 
+  //   path: '/', 
+  //   expires: new Date(Date.now() + 15 * 60 * 1000)
+  // });
 
-  Cookies.set('refresh', refresh, {
-    path: '/',
-    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-  });
-  setCookie('access', `${access}`, 1);
+  // Cookies.set('refresh', refresh, {
+  //   path: '/',
+  //   expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+  // });
+  setCookie('access', `somekey`, 1);
 };
 
 export const clearTokens = () => {
