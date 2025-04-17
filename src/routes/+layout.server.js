@@ -3,13 +3,14 @@ import { redirect } from '@sveltejs/kit';
 export async function load({ fetch, cookies }) {
   let accessToken = cookies.get('access');
   const refreshToken = cookies.get('refresh');
+  const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
 
   // Attempt token refresh if access is missing but refresh exists
   if (!accessToken && refreshToken) {
     try {
       // Try to refresh access token
       const refreshRes = await fetch(
-        `${import.meta.env.VITE_DJANGO_API_URL}/api/auth/refresh/`,
+        `${API_URL}/api/auth/refresh/`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -41,7 +42,7 @@ export async function load({ fetch, cookies }) {
   try {
     // Verify the (potentially new) access token
     const verifyRes = await fetch(
-      `${import.meta.env.VITE_DJANGO_API_URL}/api/auth/verify/`,
+      `${API_URL}/api/auth/verify/`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -53,7 +54,7 @@ export async function load({ fetch, cookies }) {
 
     // Get user data with valid token
     const userRes = await fetch(
-      `${import.meta.env.VITE_DJANGO_API_URL}/api/auth/me/`,
+      `${API_URL}/api/auth/me/`,
       {
         headers: { Authorization: `Bearer ${accessToken}` }
       }
