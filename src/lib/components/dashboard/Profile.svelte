@@ -3,7 +3,7 @@
     import { goto } from "$app/navigation";
     import Cookies from "js-cookie";
     import { onMount } from "svelte";
-    import {clickOutside} from "$lib/handler";
+    import { clickOutside } from "$lib/handler";
 
     const logout = () => {
         clearTokens();
@@ -58,73 +58,134 @@
 
     {#if isOpen}
         <div
-            use:clickOutside={()=>isOpen = false}
+            use:clickOutside={() => (isOpen = false)}
             class="absolute right-0 mt-2 w-48 bg-zinc-900 rounded-lg shadow-lg z-50 border border-zinc-800"
         >
             <div class="p-2 space-y-2">
+                <a href="/dashboard">
+                    <button
+                        class="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-100 hover:bg-zinc-700 rounded-md transition-colors"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><rect width="7" height="9" x="3" y="3" rx="1"
+                            ></rect><rect
+                                width="7"
+                                height="5"
+                                x="14"
+                                y="3"
+                                rx="1"
+                            ></rect><rect
+                                width="7"
+                                height="9"
+                                x="14"
+                                y="12"
+                                rx="1"
+                            ></rect><rect
+                                width="7"
+                                height="5"
+                                x="3"
+                                y="16"
+                                rx="1"
+                            ></rect></svg
+                        >
+                        <span>Dashboard</span>
+                    </button>
+                </a>
+                <a href="/dashboard/generate">
+                    <button
+                        class="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-100 hover:bg-zinc-700 rounded-md transition-colors"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><path
+                                d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                            ></path></svg
+                        >
+                        <span>Generate</span>
+                    </button>
+                </a>
                 <a href="/dashboard/guide">
                     <button
-                    class="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-100 hover:bg-zinc-700 rounded-md transition-colors"
-                >
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-5 h-5"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z M12 8v1 M12 10v6"
-                />
-            </svg>
-                    <span>Guide</span>
-                </button>
+                        class="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-100 hover:bg-zinc-700 rounded-md transition-colors"
+                    >
+                        `<svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
+                            ></path><path
+                                d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
+                            ></path></svg
+                        >
+                        <span>Guide</span>
+                    </button>
+                </a>
+                <a href="/dashboard/voice">
+                    <button
+                        class="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-100 hover:bg-zinc-700 rounded-md transition-colors"
+                    >
+                        `<svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><path
+                                d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"
+                            ></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"
+                            ></path><line x1="12" x2="12" y1="19" y2="22"
+                            ></line></svg
+                        >
+                        <span>Voice</span>
+                    </button>
                 </a>
                 <a href="/dashboard/profile">
                     <button
-                    class="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-100 hover:bg-zinc-700 rounded-md transition-colors"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-5 h-5"
+                        class="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-100 hover:bg-zinc-700 rounded-md transition-colors"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                        />
-                    </svg>
-                    <span>Profile</span>
-                </button>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-5 h-5"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                            />
+                        </svg>
+                        <span>Profile</span>
+                    </button>
                 </a>
-                
-                <button
-                    class="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-100 hover:text-white hover:bg-red-400 rounded-md transition-colors"
-                    onclick={() => logout()}
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-5 h-5"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
-                        />
-                    </svg>
-                    <span>Logout</span>
-                </button>
             </div>
         </div>
     {/if}

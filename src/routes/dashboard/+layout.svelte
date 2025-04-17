@@ -14,23 +14,18 @@
 </script>
 
 <div class="flex">
-    {#if browser}
-        {#if !window.location.href.includes("onboarding")}
-            <div class="sidebar-fixed">
-                <Sidebar
-                    name={data.user.fullname}
-                    image={profile_url}
-                    email={data.user.email}
-                    bind:collapsed={showSidebar}
-                />
-            </div>
-        {/if}
-    {/if}
+    <div class="sidebar-fixed responsive-div" class:main-content-with-sidebar={!showSidebar}
+    class:main-content-with-sidebar-collapsed={showSidebar}>
+        <Sidebar
+            name={data.user.fullname}
+            image={profile_url}
+            email={data.user.email}
+            bind:collapsed={showSidebar}
+        />
+    </div>
 
     <div
         class="flex-1 transition"
-        class:main-content-with-sidebar={!showSidebar}
-        class:main-content-with-sidebar-collapsed={showSidebar}
     >
         <slot />
     </div>
@@ -53,7 +48,7 @@
         /* transition all properties */
         transition-duration: 300ms;
         /* Tailwind duration-300 equals 300ms */
-        padding-left: calc(16rem + 20px);
+        padding-right: calc(16rem + 20px);
         /* for expanded sidebar (16rem + 20px) */
     }
 
@@ -62,7 +57,16 @@
         transition-property: all;
         /* transition all properties */
         transition-duration: 300ms;
-        padding-left: calc(2rem + 10px);
+        padding-right: calc(2rem + 10px);
         /* for collapsed sidebar (4rem + 20px) */
+    }
+    .responsive-div {
+        display: none;
+    }
+
+    @media (min-width: 1024px) {
+        .responsive-div {
+            display: block;
+        }
     }
 </style>
