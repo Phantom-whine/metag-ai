@@ -110,7 +110,7 @@
             class="container mx-auto px-4 py-16 max-w-full lg:max-w-6xl relative top-[40px]"
         >
             <h1 class="flot-b text-4xl md:text-5xl lg:text-6xl font-bold mb-16 bg-gradient-to-r from-[#ccfc7e] to-green-300 bg-clip-text text-transparent">
-                Welcome {data.user.fullname || Expert}
+                Welcome {data.user.fullname || 'Expert'}
             </h1>
             <div class="space-y-6 sm:space-y-8">
                 <div

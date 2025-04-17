@@ -94,12 +94,20 @@
       // Cookies.set('access', loginResponse.access, { expires: TOKEN_EXPIRY });
       // Cookies.set('refresh', loginResponse.refresh, { expires: REFRESH_TOKEN_EXPIRY });
 
+      console.log(
+        loginResponse.access,
+        loginResponse.refresh,
+        loginResponse.profile,
+        loginResponse.register,
+      )
+
       loginUser(
         loginResponse.access,
         loginResponse.refresh,
         loginResponse.profile,
         loginResponse.register,
       );
+
     } catch (error) {
       isLoading = false;
       console.error("Error during Google login:", error);
