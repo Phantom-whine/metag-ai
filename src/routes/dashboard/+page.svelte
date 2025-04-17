@@ -16,6 +16,7 @@
     import { clickOutside } from "$lib/handler";
 
     let { data } = $props();
+    const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
 
     function updateQueryParam(key, value) {
         // Get the current query parameters or create an empty one
@@ -47,7 +48,7 @@
         let frame = $page.url.searchParams.get("frame") || "most_recent";
         let pageNumber = $page.url.searchParams.get("page") || 1;
         try {
-            const response = await axios.get(`${import.meta.env.VITE_DJANGO_API_URL}/api/posts?frame=${frame}&page=${pageNumber}`, {
+            const response = await axios.get(`${API_URL}/api/posts?frame=${frame}&page=${pageNumber}`, {
                 headers: {
                     'Authorization': `Bearer ${Cookies.get('access')}`
                 }
@@ -77,7 +78,7 @@
       posts = posts.filter(post => post.id !== id); // Strict inequality
 
       // Send deletion request to the backend
-      await axios.delete(`${import.meta.env.VITE_DJANGO_API_URL}/api/posts/${id}/`, {
+      await axios.delete(`${API_URL}/api/posts/${id}/`, {
         headers: { 'Authorization': `Bearer ${Cookies.get('access')}` }
       });
 

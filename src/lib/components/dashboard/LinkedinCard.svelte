@@ -62,7 +62,7 @@
 
     let content_edited;
 
-    const API_URL = import.meta.env.VITE_DJANGO_API_URL;
+    const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
     const API_ENDPOINT = (id) => `${API_URL}/api/posts/edit/${id}/`;
     const getAuthHeader = () => ({
         Authorization: `Bearer ${Cookies.get("access")}`,

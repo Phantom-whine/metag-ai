@@ -12,6 +12,7 @@
     let loading = $state(false);
     let loading_gen = $state(false);
     let { data } = $props();
+    const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
 
     let activeTab = $state("text");
     let openModal = $state(false);
@@ -115,7 +116,7 @@
     }
 
     const generatePost = async () => {
-        const API_URL = import.meta.env.VITE_DJANGO_API_URL;
+        const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
         let endpoint, payload, validationError;
 
         try {
@@ -181,7 +182,7 @@
     const regenerate = async () => {
         loading_gen = true;
         try {
-            const API_URL = import.meta.env.VITE_DJANGO_API_URL;
+            const API_URL = API_URL;
             const response = await axios.post(
                 `${API_URL}/api/posts/regenerate/${result.id}/`,
                 {}, // Empty request body

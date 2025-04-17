@@ -20,8 +20,8 @@
     let loading = $state(false);
     let ai_prompt = $state();
 
-    const API_URL = import.meta.env.VITE_DJANGO_API_URL;
-
+    const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
+    
     const postId = $page.url.searchParams.get("post_id");
 
     function removeTags(inputText) {

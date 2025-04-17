@@ -11,6 +11,7 @@
     let { user } = data;
     let { id } = data;
     let new_title = $state();
+    const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
 
     let msg = $state();
     let type = $state();
@@ -25,7 +26,7 @@
     onMount(async () => {
         try {
             const response = await axios.get(
-                `${import.meta.env.VITE_DJANGO_API_URL}/api/posts/${id}`,
+                `${API_URL}/api/posts/${id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${Cookies.get("access")}`,

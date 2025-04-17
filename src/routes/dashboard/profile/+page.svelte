@@ -9,6 +9,7 @@
   let { data } = $props();
   let loading = $state(false);
   let showConfirm = $state(false);
+  const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
 
   console.log(data)
 
@@ -53,7 +54,7 @@
     loading = true;
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_DJANGO_API_URL}/api/auth/delete-account/`,
+        `${API_URL}/api/auth/delete-account/`,
         {
           headers: {
             Authorization: `Bearer ${Cookies.get("access")}`,

@@ -19,7 +19,7 @@
     var use_hashtag = $state();
     var tone = $state();
 
-    const API_URL = import.meta.env.VITE_DJANGO_API_URL;
+    const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
 
     async function create_voice() {
         console.log({

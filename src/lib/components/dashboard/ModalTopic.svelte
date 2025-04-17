@@ -5,7 +5,7 @@
     import {clickOutside} from "$lib/handler";
     
     let { openModal=$bindable(false), onUse } = $props();
-    const API_URL = import.meta.env.VITE_DJANGO_API_URL;
+    const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
 
     let selectedField = $state(null);
     let loading = $state(false);

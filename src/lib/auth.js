@@ -2,10 +2,9 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import { goto } from '$app/navigation';
 
-const API_URL = import.meta.env.VITE_DJANGO_API_URL;
+const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
 const COOKIE_CONFIG = {
   path: '/',
-  secure: window.location.protocol === 'https:',
   sameSite: 'strict'
 };
 

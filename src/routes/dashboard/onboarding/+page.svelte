@@ -6,6 +6,7 @@
   // Reactive state
   let loading = $state(false);
   let current = $state(1);
+  const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
   let formData = $state({
     userName: "",
     engagementRate: "",
@@ -48,7 +49,7 @@
     loading = true;
     try {
       await axios.post(
-        `${import.meta.env.VITE_DJANGO_API_URL}/api/auth/set/`,
+        `${API_URL}/api/auth/set/`,
         {
           name: formData.userName,
           goal: formData.linkedinGoal,
