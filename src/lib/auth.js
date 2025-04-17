@@ -110,7 +110,7 @@ export const loginUser = async (access, refresh, profile, register = false) => {
   } else {
     logger.info('Redirecting to onboarding');
     localStorage.setItem('boarded', 'false');
-    goto('/dashboard/onboarding');
+    goto('/onboarding');
   }
   
   logger.success('User login completed successfully');

@@ -9,7 +9,7 @@ export function load({ parent }) {
         
         // Only check localStorage when running in the browser
         if (browser && localStorage.getItem('boarded') === 'false') {
-            throw redirect(307, '/dashboard/onboarding');
+            throw redirect(307, '/onboarding');
         }
     });
 }

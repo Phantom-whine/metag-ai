@@ -6,6 +6,7 @@
   // Reactive state
   let loading = $state(false);
   let current = $state(1);
+  let submitted = $state();
   const API_URL = 'https://metag-prod-api-ql90k.kinsta.app';
   let formData = $state({
     userName: "",
