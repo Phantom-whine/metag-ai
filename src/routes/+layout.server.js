@@ -23,8 +23,6 @@ export async function load({ fetch, cookies }) {
       accessToken = access;
       cookies.set('access', access, { 
         path: '/', 
-        sameSite: 'Strict',
-        httpOnly: false,  // 👈 Explicitly allow client-side access
         expires: new Date(Date.now() + 15 * 60 * 1000) // 15 minutes
       });
     } catch (error) {
