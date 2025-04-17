@@ -160,7 +160,7 @@ export const refreshToken = async () => {
     return data.access;
   } catch (error) {
     logger.error('Token refresh failed:', error);
-    clearTokens();
+    // clearTokens();
     return null;
   }
 };
