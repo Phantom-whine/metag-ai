@@ -4,11 +4,10 @@ import { goto } from '$app/navigation';
 
 const API_URL = import.meta.env.VITE_DJANGO_API_URL;
 
-function setCookie(name, value, minutes) {
-  const expires = new Date(Date.now() + minutes * 60 * 1000).toUTCString();
+function setCookie(name, value, days) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString(); // 864e5 = 86400000 ms (1 day)
   document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
 }
-
 
 // Token management
 export const isLoggedIn = () => !!Cookies.get('access');
@@ -17,19 +16,16 @@ export const getRefreshToken = () => Cookies.get('refresh') || '';
 
 export const setTokens = (access, refresh) => {
   console.log('saved')
-  // Cookies.set('access', access, { 
-  //   path: '/', 
-  //   sameSite: 'Strict',
-  //   expires: new Date(Date.now() + 15 * 60 * 1000)
-  // });
-  setCookie('access', access, 15); // 15 minutes
+  Cookies.set('access', access, { 
+    path: '/', 
+    expires: new Date(Date.now() + 15 * 60 * 1000)
+  });
 
-  // Cookies.set('refresh', refresh, {
-  //   path: '/',
-  //   sameSite: 'Strict',
-  //   expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-  // });
-  setCookie('refresh',refresh, 7 * 24 * 60);
+  Cookies.set('refresh', refresh, {
+    path: '/',
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+  });
+  setCookie('user_token', 'abc123', 7);
 };
 
 export const clearTokens = () => {
@@ -79,8 +75,7 @@ export const apiClient = async (endpoint, options = {}) => {
 // Auth operations
 export const loginUser = async (access, refresh, profile, register) => {
   if(profile){
-    // Cookies.set('profile', profile)
-    setCookie('profile', profile);
+    Cookies.set('profile', profile)
   }
   setTokens(access, refresh);
   initializeAuth();
