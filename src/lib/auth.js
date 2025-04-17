@@ -3,7 +3,11 @@ import axios from 'axios';
 import { goto } from '$app/navigation';
 
 const API_URL = import.meta.env.VITE_DJANGO_API_URL;
-const isProduction = true;
+
+function setCookie(name, value, days) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString(); // 864e5 = 86400000 ms (1 day)
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+}
 
 // Token management
 export const isLoggedIn = () => !!Cookies.get('access');
@@ -23,6 +27,7 @@ export const setTokens = (access, refresh) => {
     sameSite: 'Strict',
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
   });
+  setCookie('user_token', 'abc123', 7);
 };
 
 export const clearTokens = () => {
