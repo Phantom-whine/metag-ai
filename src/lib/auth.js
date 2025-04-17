@@ -11,38 +11,28 @@ export const getAccessToken = () => Cookies.get('access') || '';
 export const getRefreshToken = () => Cookies.get('refresh') || '';
 
 export const setTokens = (access, refresh) => {
-  const cookieOptions = {
-    path: '/',
-    sameSite: isProduction ? 'None' : 'Lax',
-    secure: isProduction,
-  };
-
-  Cookies.set('access', access, {
-     // ...cookieOptions,
-    expires: 15 / (60 * 24) // 15 minutes in days
+  console.log('saved')
+  Cookies.set('access', access, { 
+    path: '/', 
+    sameSite: 'Strict',
+    expires: new Date(Date.now() + 15 * 60 * 1000)
   });
 
   Cookies.set('refresh', refresh, {
-    // ...cookieOptions,
-    expires: 7 // 7 days
+    path: '/',
+    sameSite: 'Strict',
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
   });
-
-  console.log('Tokens set:', Cookies.get('access'), Cookies.get('refresh'));
 };
 
 export const clearTokens = () => {
-  const cookieOptions = {
-    path: '/',
-    sameSite: isProduction ? 'None' : 'Lax',
-    secure: isProduction
-  };
-
-  Cookies.remove('access', cookieOptions);
-  Cookies.remove('refresh', cookieOptions);
-  Cookies.remove('profile', cookieOptions);
+  Cookies.remove('access', { path: '/' });
+  Cookies.remove('refresh', { path: '/' });
+  Cookies.remove('profile', { path: '/' });
   stopTokenRefresh();
   goto('/');
 };
+
 
 // Enhanced API client
 export const apiClient = async (endpoint, options = {}) => {
@@ -81,24 +71,16 @@ export const apiClient = async (endpoint, options = {}) => {
 
 // Auth operations
 export const loginUser = async (access, refresh, profile, register) => {
-  const cookieOptions = {
-    path: '/',
-    sameSite: isProduction ? 'None' : 'Lax',
-    secure: isProduction
-  };
-
-  if (profile) {
-    Cookies.set('profile', profile, cookieOptions);
+  if(profile){
+    Cookies.set('profile', profile)
   }
-
   setTokens(access, refresh);
   initializeAuth();
-
-  if (!register) {
+  if(!register){
     goto('/dashboard');
-  } else {
-    localStorage.setItem('boarded', 'false');
-    goto('/dashboard/onboarding');
+  }else{
+    localStorage.setItem('boarded', 'false')
+    goto('/dashboard/onboarding')
   }
 };
 
@@ -165,7 +147,7 @@ export const startTokenRefresh = () => {
 
   // Run immediately and every 5 minutes
   checkAndRefresh();
-  refreshInterval = setInterval(checkAndRefresh, 300000); // 5 minutes
+  refreshInterval = setInterval(checkAndRefresh, 200000); // 5 minutes
 };
 
 export const stopTokenRefresh = () => {
