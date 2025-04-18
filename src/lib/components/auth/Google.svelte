@@ -148,7 +148,7 @@
 <div>
   <button
     onclick={handleGoogleSignIn}
-    disabled={!ready}
+    disabled={!ready || isLoading}
     class="mx-auto w-[90%] md:w-full h-12 bg-[#ccfc7e] font-extrabold text-black rounded-md flex items-center px-2 active:scale-95 transition-all"
   >
     {#if !isLoading}

@@ -25,7 +25,8 @@
                             <span class="px-2 py-1 bg-gray-100 rounded-full text-xs">Input</span>
                         </h3>
                         <div class="space-y-4">
-                            <div class="bg-red-100 p-4 rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer">
+                            <div class="bg-red-100 p-4 rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer"
+                            >
                                 <div class="text-red-600 font-medium mb-2 flex items-center justify-between">
                                     <span>Youtube</span>
                                     <span class="text-xs bg-red-200 px-2 py-1 rounded-full">URL</span>

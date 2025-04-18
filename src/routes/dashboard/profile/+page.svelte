@@ -79,9 +79,9 @@
 <div class="max-w-[95%] md:max-w-4xl mx-auto mt-6 py-2">
   <div class="flex items-center justify-end gap-4 flex-row-reverse">
     <!-- Header Text -->
-    <h1 class="text-xl font-semibold text-white flot-b">
+    <!-- <h1 class="text-xl font-semibold text-white flot-b">
       {data.user.fullname}'s Profile
-    </h1>
+    </h1> -->
   </div>
 </div>
 <div class="min-h-screen flex items-center justify-center flot mb-16">

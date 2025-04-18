@@ -34,7 +34,7 @@
             <!-- Bottom Footer -->
             <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                 <p class="text-gray-500 text-sm">
-                    © 2025 Metag.me All rights reserved.
+                    © 2025 Metag All rights reserved.
                 </p>
                 <div class="flex items-center space-x-2">
                     <img 
