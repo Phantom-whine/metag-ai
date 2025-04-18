@@ -31,7 +31,7 @@
 <div class="flex items-center justify-center mt-20 p-4">
     <div class="bg-[#ccfc7e] p-8 rounded-lg shadow-lg max-w-5xl">
         <p class="text-black text-4xl font-bold leading-tight text-center flot-b">
-            Struggling to get <span class="bg-black p-2 rounded-md text-white">NOTICED?</span> But with the right spark, your content can go viral. Unsure what to say? Metag AI helps you craft posts that connect and messages that stick.
+            Struggling to get <span class="bg-black p-1 rounded-md text-white">NOTICED?</span> But with the right spark, your content can go viral. Unsure what to say? Metag AI helps you craft posts that connect and messages that stick.
              </p>
     </div>
 </div>

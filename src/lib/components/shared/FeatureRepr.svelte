@@ -26,6 +26,7 @@
                         </h3>
                         <div class="space-y-4">
                             <div class="bg-red-100 p-4 rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer"
+                                 style='border: 2px solid #ffcccc;'
                             >
                                 <div class="text-red-600 font-medium mb-2 flex items-center justify-between">
                                     <span>Youtube</span>
@@ -36,7 +37,9 @@
                                 </div>
                             </div>
     
-                            <div class="bg-blue-100 p-4 rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer">
+                            <div class="bg-blue-100 p-4 rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer"
+                                 style="border: 2px solid #bfdcff;"
+                            >
                                 <div class="text-blue-600 font-medium mb-2 flex items-center justify-between">
                                     <span>Blog Post</span>
                                     <span class="text-xs bg-blue-200 px-2 py-1 rounded-full">URL</span>
@@ -46,7 +49,9 @@
                                 </div>
                             </div>
     
-                            <div class="bg-green-100 p-4 rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer">
+                            <div class="bg-green-100 p-4 rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer"
+                                 style="border: 2px solid #bcf7d1;"
+                            >
                                 <div class="text-green-600 font-medium mb-2 flex items-center justify-between">
                                     <span>Topic</span>
                                     <span class="text-xs bg-green-200 px-2 py-1 rounded-full">Text</span>
@@ -76,7 +81,7 @@
     
                         <div class="space-y-4">
     
-                            <div class="bg-blue-500/10 p-4 rounded-xl">
+                            <div class="bg-blue-500/10 p-4 rounded-xl" style="border: 2px solid #bfdcff;">
                                 <div class="text-blue-600 font-medium mb-2 flex items-center justify-between">
                                     <span>LinkedIn Post</span>
                                     <!-- <span class="text-xs bg-blue-200 px-2 py-1 rounded-full animate-pulse">Converting</span> -->
