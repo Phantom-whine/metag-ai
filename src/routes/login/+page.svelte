@@ -41,11 +41,11 @@
             <!-- Footer text -->
             <p class="text-zinc-500 text-sm mt-6 text-center">
                 By continuing, you agree to Metag's
-                <a href="/" class="text-zinc-400 hover:text-white underline"
+                <a href="/terms" class="text-zinc-400 hover:text-white underline"
                     >Terms of Service</a
                 >
                 and
-                <a href="/" class="text-zinc-400 hover:text-white underline"
+                <a href="/privacy" class="text-zinc-400 hover:text-white underline"
                     >Privacy Policy</a
                 >.
             </p>

@@ -23,10 +23,10 @@
             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
                 <!-- Footer Links -->
                 <nav class="flex flex-wrap justify-center md:justify-start gap-6 md:gap-8 mb-6 md:mb-0">
-                    <a href="/" class="text-gray-400 hover:text-white transition-colors">Features</a>
-                    <a href="/" class="text-gray-400 hover:text-white transition-colors">Pricing</a>
-                    <a href="/" class="text-gray-400 hover:text-white transition-colors">Blog</a>
-                    <a href="/" class="text-gray-400 hover:text-white transition-colors">Testimonials</a>
+                    <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Terms and Conditions</a>
+                    <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="/refund" class="text-gray-400 hover:text-white transition-colors">Refund Policy</a>
+                    <a href="/login" class="text-gray-400 hover:text-white transition-colors">Login</a>
                     <a href="/" class="text-gray-400 hover:text-white transition-colors">Contact</a>
                 </nav>
             </div>
