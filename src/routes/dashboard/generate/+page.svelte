@@ -25,7 +25,7 @@
     let cta = $state();
     onMount(() => {
         if (browser) {
-            cta = localStorage.getItem("ctaContent") || "";
+            cta = localStorage.getItem("ctaContent") || "What’s your take on this? 💬 Let’s start a conversation—drop your thoughts below! 👇✨";
         }
     });
     let result = $state();

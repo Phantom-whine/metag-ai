@@ -37,7 +37,7 @@
                 },
                 {
                     headers: {
-                        Authorization: `Bearer ${localStorage.getItem("access")}`,
+                        Authorization: `Bearer ${Cookies.get("access")}`,
                     },
                 },
             );

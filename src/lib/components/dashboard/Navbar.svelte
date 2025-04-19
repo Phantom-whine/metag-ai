@@ -10,7 +10,7 @@
     let ctaText = $state();
     onMount(() => {
         if (browser) {
-            ctaText = localStorage.getItem("ctaContent") || "What’s your take on this? 💬 Let’s start a conversation—drop your thoughts below! 👇✨";
+            ctaText = localStorage.getItem("ctaContent");
         }
     });
 
